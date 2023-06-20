@@ -16,11 +16,11 @@ class MenuData:
             new_dish = Dish(dish['name'], dish['price'])
             for ingredient in dish['ingredients']:
                 new_ingredient = Ingredient(ingredient['ingredient_name'])
-                new_dish.add_ingredient_dependency(new_ingredient, ingredient['ingredient_qnt'])
+                new_dish.add_ingredient_dependency(
+                    new_ingredient,
+                    ingredient['ingredient_qnt']
+                    )
             self.dishes.add(new_dish)
 
     def add_dish(self, dish: Dish) -> None:
         self.dishes.add(dish)
-
-
-menu_teste = MenuData('/home/bernardo/trybe/projetos/ciencia-da-computacao/sd-026-b-restaurant-orders/data/menu_base_data.csv')

@@ -11,4 +11,5 @@ class Dish_Type(TypedDict):
     price: float
     ingredients: list[Ingredient_Type]
 
+
 Dish_Dict = Dict[str, Dish_Type]
