@@ -1,12 +1,12 @@
 from utils.csv_read import csv_data
 from utils.dish_dict_formater import format_csv_to_dict
 from src.models.dish import Dish
-from src.models.ingredient import Ingredient
-
+from src.models.ingredient import Ingredient, Restriction
+#LEMBRE-SE DE APAGAR A LINHA ACIMA
 
 class MenuData:
     def __init__(self, source_path: str) -> None:
-        self.dishes = set()
+        self.dishes: set[Dish] = set()
         self.register_all_dishes(source_path)
 
     def register_all_dishes(self, file_path: str) -> None:
@@ -24,3 +24,7 @@ class MenuData:
 
     def add_dish(self, dish: Dish) -> None:
         self.dishes.add(dish)
+
+# teste = MenuData('/home/bernardo/trybe/projetos/ciencia-da-computacao/sd-026-b-restaurant-orders/data/menu_base_data.csv')
+# for dish in teste.dishes:
+#     print(Restriction.ANIMAL_DERIVED.value)
