@@ -27,7 +27,7 @@ class InventoryMapping:
 
     # Req 5.1
     def check_recipe_availability(self, recipe: Recipe) -> bool:
-        inventory = read_csv_inventory()
+        inventory = self.inventory
         for ingredient, quantity in recipe.items():
             try:
                 inventory_qnt = inventory[ingredient]
@@ -40,4 +40,8 @@ class InventoryMapping:
 
     # Req 5.2
     def consume_recipe(self, recipe: Recipe) -> None:
-        pass
+        for ingredient in recipe:
+            final_quantity = self.inventory[ingredient] - recipe[ingredient]
+            if final_quantity < 0:
+                raise ValueError()
+            self.inventory[ingredient] = final_quantity
