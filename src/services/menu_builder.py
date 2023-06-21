@@ -41,5 +41,7 @@ class MenuBuilder:
                 if restrict == restriction:
                     should_append = False
                     break
-            menu.append(dish_menu) if should_append else None
+            avalible = self.inventory.check_recipe_availability(dish.recipe)
+            if avalible and should_append:
+                menu.append(dish_menu)
         return menu
